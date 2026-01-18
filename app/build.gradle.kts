@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.practicaltest"
+    namespace = "com.qtglobal.practicaltest"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.practicaltest"
+        applicationId = "com.qtglobal.practicaltest"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -29,6 +29,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug") // Use testing
         }
     }
     compileOptions {
@@ -43,7 +44,7 @@ android {
     }
 }
 
-// protobuf configuration block
+// protobuf configuration
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:3.24.4"
@@ -83,10 +84,26 @@ dependencies {
     ksp(libs.room.compiler)
 
     // SQLCipher dependency
-    implementation(libs.android.database.sqlcipher.v450)
+//    implementation(libs.android.database.sqlcipher.v450)
+//    implementation("net.zetetic:sqlcipher-android:4.12.0")
+
+
+//    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
     // Coil dependencies
     implementation(libs.coil.compose.v270)
+
+    // EncryptedSharedPreferences for secure key storage
+//    implementation(libs.androidx.security.crypto)
+
+
+    // SQLCipher for Android (Room openHelperFactory)
+    implementation("net.zetetic:sqlcipher-android:4.12.0")
+
+    // EncryptedSharedPreferences for secure key storage
+    implementation(libs.androidx.security.crypto.v110alpha06)
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
