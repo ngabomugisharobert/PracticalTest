@@ -3,6 +3,7 @@ package com.qtglobal.practicaltest.di
 import com.qtglobal.practicaltest.data.local.database.EmailDao
 import com.qtglobal.practicaltest.data.repository.EmailRepository
 import com.qtglobal.practicaltest.data.repository.EmailRepositoryImpl
+import com.qtglobal.practicaltest.data.services.ProtobufParserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,8 +16,11 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideEmailRepository(emailDao: EmailDao): EmailRepository {
-        return EmailRepositoryImpl(emailDao)
+    fun provideEmailRepository(
+        emailDao: EmailDao,
+        protobufParserService: ProtobufParserService
+    ): EmailRepository {
+        return EmailRepositoryImpl(emailDao, protobufParserService)
     }
 }
 

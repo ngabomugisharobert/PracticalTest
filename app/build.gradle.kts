@@ -73,6 +73,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.hilt.android.v2571)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.jupiter)
     ksp(libs.hilt.android.compiler)
 
     // protobuf dependencies
@@ -90,8 +92,6 @@ dependencies {
 
 //    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
-    // Coil dependencies
-    implementation(libs.coil.compose.v270)
 
     // EncryptedSharedPreferences for secure key storage
 //    implementation(libs.androidx.security.crypto)
@@ -106,6 +106,15 @@ dependencies {
 
 
     testImplementation(libs.junit)
+    // Unit testing dependencies
+    testImplementation("io.mockk:mockk:1.13.8")
+//    testImplementation("app.cash.turbine:turbine:1.0.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("com.google.truth:truth:1.1.4")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

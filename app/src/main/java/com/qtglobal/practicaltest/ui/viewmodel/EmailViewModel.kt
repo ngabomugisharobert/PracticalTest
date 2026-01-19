@@ -8,6 +8,7 @@ import com.qtglobal.practicaltest.data.repository.EmailRepository
 import com.qtglobal.practicaltest.domain.model.Email
 import com.qtglobal.practicaltest.domain.usecase.LoadEmailUseCase
 import com.qtglobal.practicaltest.domain.usecase.VerifyHashUseCase
+import com.qtglobal.practicaltest.ui.state.EmailUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,16 +35,6 @@ import javax.inject.Inject
  */
 
 
-sealed class EmailUiState {
-    object Idle : EmailUiState()
-    object Loading : EmailUiState()
-    data class Success(
-        val email: Email,
-        val currentIndex: Int,
-        val totalCount: Int
-    ) : EmailUiState()
-    data class Error(val message: String) : EmailUiState()
-}
 
 @HiltViewModel
 class EmailViewModel @Inject constructor(
@@ -165,4 +156,3 @@ class EmailViewModel @Inject constructor(
         _uiState.value = EmailUiState.Idle
     }
 }
-

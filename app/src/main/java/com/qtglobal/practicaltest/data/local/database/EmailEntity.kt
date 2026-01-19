@@ -2,6 +2,7 @@ package com.qtglobal.practicaltest.data.local.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.qtglobal.practicaltest.domain.model.Email
 
 @Entity(tableName = "emails")
 data class EmailEntity(
